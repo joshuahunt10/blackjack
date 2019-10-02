@@ -10,30 +10,31 @@
 */
 
 
-function handValue (hand) {
+const handValue = hand => {
   let handTotal = 0;
-  aceFound = false;
-  for (var i = 0; i < hand.length; i++) {
-    if(hand[i] === 'K' || hand[i] === 'Q' || hand[i] === 'J'){
-    hand[i] = '10';
-  }
-    if (hand[i] === 'A'){
+  let aceFound = false;
+  for (let i = 0; i < hand.length; i++) {
+    if (hand[i] === 'K' ||
+        hand[i] === 'Q' ||
+        hand[i] === 'J') {
+      hand[i] = '10';
+    }
+    if (hand[i] === 'A') {
       hand[i] = '11';
       aceFound = true;
-      if(handTotal > 10){
+      if (handTotal > 10) {
         hand[i] = 1;
       }
     }
     handTotal += Number(hand[i]);
-
-    }
-    if(aceFound = true && handTotal > 21){
-        handTotal = handTotal - 10;
+  }
+  if (aceFound === true && handTotal > 21) {
+    handTotal -= 10;
   }
   return handTotal;
 }
 
-console.log(handValue(["8", "A", "J"]));
+console.log(handValue(['8', 'A', 'J']));
 
 /* -----  Hints ------
 
